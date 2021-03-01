@@ -29,11 +29,7 @@ public class Account {
         return balance;
     }
      public void withdraw(Double amount){
-        if(amount >= getBalance()){
-            this.balance-=amount;
-        }else{
-            System.out.println(" Impossible withdraw !");
-        }
+       balance -= amount +5.0;
      }
      public void deposit(Double amount){
         this.balance+=amount;
