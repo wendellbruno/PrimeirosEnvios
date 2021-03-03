@@ -46,9 +46,6 @@ public class Program {
                 estabelecimento.pagarConsulta(codConsulta);
                 scan.nextLine();
                 break;
-            case 4 :
-                estabelecimento.imprimir();
-                break;
                }
 
 
