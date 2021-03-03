@@ -52,7 +52,7 @@ public class Estabelecimento {
     public void contratarNutri(ArrayList<Nutricionista> listNutri, int bucs) {
         Nutricionista busca = listNutri.stream().filter(x -> x.getCrn() == bucs).findFirst().orElse(null);
         if (busca == null) {
-            System.out.print(" CRN DISPONIVEL " + "\n" + " Nome do nutricionista : ");
+            System.out.print("CRN DISPONIVEL " + "\n" + " Nome do nutricionista : ");
             String nome = scan.nextLine();
             System.out.print("CRN : ");
             int crn = scan.nextInt();
@@ -80,8 +80,25 @@ public class Estabelecimento {
         }
         return codConsulta;
     }
-
+    public void imprimir(){
+        for (Consulta x : listConsulta) {
+            System.out.println(x.getCodConsulta());
+        }
+    }
     public Double pagarConsulta(int codConsulta) {
+        for (int i = 0; i < listConsulta.size(); i++) {
+            if (listConsulta.get(i) != null && (listConsulta.get(i).getCodConsulta() == codConsulta)) {
+                System.out.print("Tempo da consulta : ");
+                int tempo = scan.nextInt();
+                return listConsulta.get(i).getNutriResponsavel().calcularValor(tempo);
+            } else {
+                System.out.println("Consulta não encontrada ! ");
+            }
+        }
+            return 0.0;
+}
+   /* ESSE METODO DA CERTO MAS DA O MESMO ERRO DO DE CIMA !
+     public Double pagarConsulta(int codConsulta) {
         Consulta busca = listConsulta.stream().filter(x -> x.getCodConsulta() == codConsulta).findFirst().orElse(null);
         if (busca != null) {
             for (int i = 0; i < listConsulta.size(); i++) {
@@ -94,7 +111,7 @@ public class Estabelecimento {
         } else
             System.out.println("Consulta não encontrada !");
             return 0.0;
-    }
+    }*/
 }
 
 

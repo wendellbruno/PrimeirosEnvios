@@ -46,7 +46,11 @@ public class Program {
                 estabelecimento.pagarConsulta(codConsulta);
                 scan.nextLine();
                 break;
+            case 4 :
+                estabelecimento.imprimir();
+                break;
                }
+
 
         System.out.println();
         System.out.print(" --- MENU --- " + "\n" +
@@ -55,6 +59,6 @@ public class Program {
                 " 3 - Pagar Consulta " + "\n" +
                 " 4 - Sair do sistema : ");
         aux = scan.nextInt();
-        }while (aux!=4);
+        }while (aux!=5);
     }
 }
