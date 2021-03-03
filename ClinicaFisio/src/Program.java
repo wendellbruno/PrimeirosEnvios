@@ -56,6 +56,6 @@ public class Program {
                 " 3 - Pagar Consulta " + "\n" +
                 " 4 - Sair do sistema : ");
         aux = scan.nextInt();
-        }while (aux!=5);
+        }while (aux!=4);
     }
 }
