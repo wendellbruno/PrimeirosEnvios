@@ -1,6 +1,6 @@
 public class ProdutoPerecivel extends Produto {
 
-    private Integer dataValidade;
+    public Integer dataValidade;
 
     public ProdutoPerecivel() {
     }
@@ -26,7 +26,7 @@ public class ProdutoPerecivel extends Produto {
     public Integer retirarDoEstoque(int quantidade, double data){
         if(data >= dataValidade){
             System.out.println("Impossivel inserir, produto vencido");
-          return this.qtdEstoque = 0;
+          return qtdEstoque = 0;
         }else{
             return qtdEstoque-=quantidade;
         }

@@ -160,10 +160,10 @@ public class Program {
                                 op = scan.nextInt();
                                 if (op == 1) {
                                     int codProduto = random.nextInt();
-                                    distri2.CadastrarProduto(distri.listProduto, codProduto);
+                                    distri2.CadastrarProduto(distri2.listProduto, codProduto);
                                 } else if (op == 2) {
                                     int codProduto = random.nextInt();
-                                    distri2.CadastrarProdutoPerecivel(distri.listPerecivel, codProduto);
+                                    distri2.CadastrarProdutoPerecivel(distri2.listPerecivel, codProduto);
                                 }
                                 break;
                             case 2:
@@ -277,10 +277,10 @@ public class Program {
                                 }
                                 break;
                             case 3:
-                                for (Produto x : distri.listProduto) {
+                                for (Produto x : distri2.listProduto) {
                                     System.out.println(x);
                                 }
-                                for (Produto y : distri.listPerecivel)
+                                for (Produto y : distri2.listPerecivel)
                                     System.out.println(y);
                                 break;
                         }break;
