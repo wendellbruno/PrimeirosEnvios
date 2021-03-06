@@ -40,7 +40,7 @@ public class Program {
                                         op = scan.nextInt();
                                         if (op == 1) {
                                             Produto p1;
-                                            Produto p2;
+                                            ProdutoPerecivel p2;
                                             scan.nextLine();
                                             System.out.print("Nome : ");
                                             String nome = scan.nextLine();
@@ -62,7 +62,7 @@ public class Program {
                                             }
                                         } else if (op == 2) {
                                             Produto p1;
-                                            Produto p2;
+                                            ProdutoPerecivel p2;
                                             scan.nextLine();
                                             System.out.print("Codigo : ");
                                             Integer cod = scan.nextInt();
@@ -90,7 +90,7 @@ public class Program {
                                         op = scan.nextInt();
                                         if (op == 1) {
                                             Produto p1;
-                                            Produto p2;
+                                            ProdutoPerecivel p2;
                                             scan.nextLine();
                                             System.out.print("Nome : ");
                                             String nome = scan.nextLine();
@@ -101,18 +101,20 @@ public class Program {
                                             } else if (p1 != null) {
                                                 System.out.print("Quantidade a ser removida : ");
                                                 int quantidade = scan.nextInt();
-                                                p1.retirarDoEstoque(quantidade);
+                                                p2.colocarEstoque(quantidade);
                                                 System.out.println("Estoque atualizado : " + p1.getQtdEstoque());
                                             }
                                             if (p2 != null) {
                                                 System.out.print("Quantidade a ser removida : ");
                                                 int quantidade = scan.nextInt();
-                                                p2.retirarDoEstoque(quantidade);
+                                                System.out.print("Data da remoção : ");
+                                                Double data = scan.nextDouble();
+                                                p2.retirarDoEstoque(quantidade,data);
                                                 System.out.println("Estoque atualizado : " + p2.getQtdEstoque());
                                             }
                                         } else if (op == 2) {
                                             Produto p1;
-                                            Produto p2;
+                                            ProdutoPerecivel p2;
                                             scan.nextLine();
                                             System.out.print("Codigo : ");
                                             Integer cod = scan.nextInt();
@@ -123,13 +125,15 @@ public class Program {
                                             } else if (p1 != null) {
                                                 System.out.print("Quantidade a ser removida : ");
                                                 int quantidade = scan.nextInt();
-                                                p1.retirarDoEstoque(quantidade);
+                                                p2.colocarEstoque(quantidade);
                                                 System.out.println("Estoque atualizado : " + p1.getQtdEstoque());
                                             }
                                             if (p2 != null) {
                                                 System.out.print("Quantidade a ser removida : ");
                                                 int quantidade = scan.nextInt();
-                                                p2.retirarDoEstoque(quantidade);
+                                                System.out.print("Data da remoção : ");
+                                                Double data = scan.nextDouble();
+                                                p2.retirarDoEstoque(quantidade,data);
                                                 System.out.println("Estoque atualizado : " + p2.getQtdEstoque());
                                             }
                                             break;

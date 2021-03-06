@@ -87,8 +87,8 @@ public class Distribuidora {
             Integer qtdEstoque = scan.nextInt();
             System.out.print("Valor unitario : ");
             Double precoUnitario = scan.nextDouble();
-            System.out.print("Data de vencimento : ");
-            Double dataValidade = scan.nextDouble();
+            System.out.print("Data de vencimento (apenas referente ao mês do ano atual) : ");
+            Integer dataValidade = scan.nextInt();
             scan.nextLine();
             listPerecivel.add(new ProdutoPerecivel(nomeProduto, marca, qtdEstoque, precoUnitario,dataValidade));
             System.out.println("Produto cadastrado com sucesso ! ");

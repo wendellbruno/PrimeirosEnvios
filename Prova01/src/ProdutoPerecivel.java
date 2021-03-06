@@ -1,18 +1,26 @@
 public class ProdutoPerecivel extends Produto {
 
-    private Double dataValidade;
+    private Integer dataValidade;
 
     public ProdutoPerecivel() {
     }
 
-    public ProdutoPerecivel(String nomeProduto, String marca, Integer qtdEstoque, Double precoUnitario, Double dataValidade) {
+    public ProdutoPerecivel(String nomeProduto, String marca, Integer qtdEstoque, Double precoUnitario, Integer dataValidade) {
         super(nomeProduto, marca, qtdEstoque, precoUnitario);
         this.codProduto = random.nextInt(100+1);
         this.dataValidade = dataValidade;
     }
 
-    public Double getDataValidade() {
+    public Integer getDataValidade() {
         return dataValidade;
+    }
+
+    public void colocarEstoque(int quantidade) {
+        if(this.qtdEstoque == 0){
+            this.qtdEstoque+=quantidade;
+        }else{
+            System.out.println("Estoque ainda com produtos, não é possivel inserir novos devido as datas dos produtos !");
+        }
     }
 
     public Integer retirarDoEstoque(int quantidade, double data){
@@ -20,7 +28,7 @@ public class ProdutoPerecivel extends Produto {
             System.out.println("Impossivel inserir, produto vencido");
           return this.qtdEstoque = 0;
         }else{
-            return qtdEstoque+=quantidade;
+            return qtdEstoque-=quantidade;
         }
     }
 
