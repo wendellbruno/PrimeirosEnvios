@@ -24,9 +24,12 @@ public class ProdutoPerecivel extends Produto {
         }
     }
 
-    public void colocarEstoque(int quantidade) {
-        if(qtdEstoque == 0){
-            this.qtdEstoque+=quantidade;
-        }
+    public String toString () {
+        return "Codigo : " + getCodProduto() + ", " +
+                "Nome : " + getNomeProduto() + ", " +
+                "Marca : " + getMarca() + ", " +
+                "Quantidade em estoque " + getQtdEstoque() +", " +
+                "Preço unitario : " + getPrecoUnitario() +", " +
+                "Data de vencimento : " +  getDataValidade();
     }
-}
+    }
