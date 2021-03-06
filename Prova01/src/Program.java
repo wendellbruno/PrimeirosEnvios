@@ -81,8 +81,10 @@ public class Program {
                                                 int quantidade = scan.nextInt();
                                                 p2.colocarEstoque(quantidade);
                                                 System.out.println("Estoque atualizado : " + p2.getQtdEstoque());
-                                            }break;
-                                        }break;
+                                            }
+                                            break;
+                                        }
+                                        break;
                                     case 2:
                                         System.out.print(" 1 - Por nome | 2 - Por codigo :");
                                         op = scan.nextInt();
@@ -107,7 +109,30 @@ public class Program {
                                                 int quantidade = scan.nextInt();
                                                 p2.retirarDoEstoque(quantidade);
                                                 System.out.println("Estoque atualizado : " + p2.getQtdEstoque());
-                                            }break;
+                                            }
+                                        } else if (op == 2) {
+                                            Produto p1;
+                                            Produto p2;
+                                            scan.nextLine();
+                                            System.out.print("Codigo : ");
+                                            Integer cod = scan.nextInt();
+                                            p1 = distri.listProduto.stream().filter(x -> x.getCodProduto() == cod).findFirst().orElse(null);
+                                            p2 = distri.listPerecivel.stream().filter(x -> x.getCodProduto() == cod).findFirst().orElse(null);
+                                            if (p1 == null && p2 == null) {
+                                                System.out.println("Produto não encontrado ! ");
+                                            } else if (p1 != null) {
+                                                System.out.print("Quantidade a ser removida : ");
+                                                int quantidade = scan.nextInt();
+                                                p1.retirarDoEstoque(quantidade);
+                                                System.out.println("Estoque atualizado : " + p1.getQtdEstoque());
+                                            }
+                                            if (p2 != null) {
+                                                System.out.print("Quantidade a ser removida : ");
+                                                int quantidade = scan.nextInt();
+                                                p2.retirarDoEstoque(quantidade);
+                                                System.out.println("Estoque atualizado : " + p2.getQtdEstoque());
+                                            }
+                                            break;
                                         }
                                         break;
                                 }
