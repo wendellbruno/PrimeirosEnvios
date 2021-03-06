@@ -1,10 +1,15 @@
 import java.util.ArrayList;
+import java.util.Random;
+import java.util.Scanner;
 
 public class Distribuidora {
+
     private String nome;
     private Integer numero;
     ArrayList<Produto> listProduto = new ArrayList<>();
     ArrayList<ProdutoPerecivel> listPerecivel = new ArrayList<>();
+
+    Scanner scan = new Scanner(System.in);
 
     public Distribuidora(String nome, Integer numero) {
         this.nome = nome;
@@ -14,26 +19,75 @@ public class Distribuidora {
     public Produto buscarProduto(String nome) {
         for (Produto x : listProduto) {
             if (x.getNomeProduto().equalsIgnoreCase(nome)) {
+                System.out.println(x);
                 return x;
             }
+            for (ProdutoPerecivel y: listPerecivel) {
+                if(y.getNomeProduto().equalsIgnoreCase(nome)){
+                    System.out.println(x);
+                    return y;
+            }
+          }
         }
-
+        System.out.println("Produto não encontrado !");
+        return null;
     }
-
-    public Produto buscarProduto(Integer codProduto,String marca) {
-        Produto prod;
-        ProdutoPerecivel prodPerce;
-        prod = listProduto.stream().filter(x -> x.getCodProduto() == codProduto || x.getMarca().equalsIgnoreCase(marca)).findFirst().orElse(null);
-      if(prod == null){
-            prodPerce = listPerecivel.stream().filter(x->x.getCodProduto()==codProduto || x.getMarca().equalsIgnoreCase(marca)).findFirst().orElse(null);
-        }else(prodPerce == null && prod == null){
-            System.out.println("Produto não encontrado");
-            return null;
+    public Produto buscarProduto(String nome, Integer codProduto) {
+        for (Produto x : listProduto) {
+            if (x.getNomeProduto().equalsIgnoreCase(nome) || x.getCodProduto() != codProduto) {
+                System.out.println(x.getNomeProduto());
+                return x;
+            }
+            for (ProdutoPerecivel y: listPerecivel) {
+                if(y.getNomeProduto().equalsIgnoreCase(nome) || y.getCodProduto() != codProduto ){
+                    System.out.println(y.getNomeProduto());
+                    return y;
+                }
+            }
         }
-
-
+        System.out.println("Produto não encontrado !");
+        return null;
     }
+    public void CadastrarProduto(ArrayList<Produto>listProduto,Integer codProduto) {
+        Produto busca;
+        busca = listProduto.stream().filter(x -> x.getCodProduto() == codProduto).findFirst().orElse(null);
+        if (busca == null) {
+            System.out.print("Nome : ");
+            String nomeProduto = scan.nextLine();
+            System.out.print("Marca : ");
+            String marca = scan.nextLine();
+            System.out.print("Quantidade inicial do estoque : ");
+            Integer qtdEstoque = scan.nextInt();
+            System.out.print("Valor unitario : ");
+            Double precoUnitario = scan.nextDouble();
+            scan.nextLine();
+            listProduto.add(new Produto(nomeProduto, marca, qtdEstoque, precoUnitario));
+            System.out.println("Produto cadastrado com sucesso ! ");
+        }else{
+            System.out.println("Codigo já existente !");
+        }
     }
+    public void CadastrarProdutoPerecivel(ArrayList<ProdutoPerecivel>listPerecivel,Integer codProduto){
+        System.out.print("Gerando codigo de produto .... ");
+        Produto busca;
+        busca=listProduto.stream().filter(x->x.getCodProduto()==codProduto).findFirst().orElse(null);
+        if(busca == null)
+        System.out.print("Nome : ");
+        String nomeProduto = scan.nextLine();
+        System.out.print("Marca : ");
+        String marca = scan.nextLine();
+        System.out.print("Quantidade inicial do estoque : ");
+        Integer qtdEstoque = scan.nextInt();
+        System.out.print("Valor unitario : ");
+        Double precoUnitario = scan.nextDouble();
+        Double dataValidade = scan.nextDouble();
+        listPerecivel.add(new ProdutoPerecivel(nomeProduto,marca,qtdEstoque,precoUnitario,dataValidade));
+    }
+
+    public String toString(){
+        return nome + " - " + numero;
+    }
+
 
 
 

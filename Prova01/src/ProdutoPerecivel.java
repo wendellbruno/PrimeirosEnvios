@@ -7,6 +7,7 @@ public class ProdutoPerecivel extends Produto {
 
     public ProdutoPerecivel(String nomeProduto, String marca, Integer qtdEstoque, Double precoUnitario, Double dataValidade) {
         super(nomeProduto, marca, qtdEstoque, precoUnitario);
+        this.codProduto = random.nextInt(100+1);
         this.dataValidade = dataValidade;
     }
 

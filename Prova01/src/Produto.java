@@ -1,17 +1,19 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class Produto {
     Scanner scan = new Scanner(System.in);
-    private Integer codProduto;
+    Random random = new Random();
+    protected Integer codProduto;
     private String nomeProduto;
     private String marca;
     protected Integer qtdEstoque;
     private Double precoUnitario;
-
     public Produto() {
     }
 
     public Produto(String nomeProduto, String marca, Integer qtdEstoque, Double precoUnitario) {
+        this.codProduto = random.nextInt(100+1);
         this.nomeProduto = nomeProduto;
         this.marca = marca;
         this.qtdEstoque = qtdEstoque;
@@ -40,7 +42,7 @@ public class Produto {
 
     public Integer retirarDoEstoque(int quantidade) {
         if (this.getQtdEstoque() >= quantidade) {
-            return this.qtdEstoque = -quantidade;
+            return this.qtdEstoque-=quantidade;
         } else {
             System.out.println("Quantidade superior ao estoque, estoque zerado, resto da quantidade pedida");
             return this.qtdEstoque % quantidade;
@@ -48,18 +50,13 @@ public class Produto {
     }
 
     public void colocarEstoque(int quantidade) {
-        System.out.print("Codigo do produto a ser adicionado : ");
-        int codigo = scan.nextInt();
-        if (codigo == getCodProduto()) {
-            this.qtdEstoque += quantidade;
-        } else {
-            System.out.println("Produto nao encontrado !");
+          this.qtdEstoque += quantidade;
         }
-    }
     public String toString () {
             return "Codigo : " + getCodProduto() + ", " +
                     "Nome : " + getNomeProduto() + ", " +
-                    "Marca : " + getQtdEstoque() + ", " +
-                    "Quantidade em estoque " + getQtdEstoque();
+                    "Marca : " + getMarca() + ", " +
+                    "Quantidade em estoque " + getQtdEstoque() +", " +
+                    "Preço unitario : " + getPrecoUnitario();
         }
     }
