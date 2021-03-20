@@ -8,7 +8,9 @@ import java.net.CacheRequest;
 public class RentalService {
     private Double pricePerDay;
     private Double pricePerHour;
-    private BrazilTaxService taxService;
+
+    private iTaxService taxService;
+
     double basicPayment;
 
     public RentalService() {
