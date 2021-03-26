@@ -1,22 +1,22 @@
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 
 public class Leitor {
     public static void main(String[] args) {
 
-        String path = "c:\\temp\\in.txt";
+        String[] lines = new String[]{"oi, olá, hellou, tchau, até mais"};
 
-        try(BufferedReader br = new BufferedReader(new FileReader(path))){
-            String line = br.readLine();
-            while(line != null){
-                System.out.println(line);
-                line = br.readLine();
+        String path = "c:\\temp\\out.txt";
+
+        try (BufferedWriter bf = new BufferedWriter(new FileWriter(path, true))) {
+                for (String line : lines) {
+                    bf.write(line);
+                    bf.newLine();
+                }
             }
-        }catch (IOException e ){
-            System.out.println("Error : + " + e.getMessage());
+            catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-    }
 }
+
