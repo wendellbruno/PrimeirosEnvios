@@ -12,6 +12,11 @@ public class Program {
         cookies.put("phone","999999");
 
         cookies.remove("email");
+        
+        //Saber se existe a chave :
+        System.out.println("Contains 'phone' key : " + cookies.containsKey("phone"));
+        //Saber o valor dentro da chave :
+        System.out.println("Phone number : " + cookies.get("phone"));
 
         System.out.println("ALL COOKIES");
         for (String key : cookies.keySet()) {
