@@ -1,11 +1,10 @@
 package application;
 
 import entites.Product;
-import util.UpCaseName;
+import entites.ProductService;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class Program {
@@ -17,9 +16,10 @@ public class Program {
         list.add(new Product("Tablet", 350.50));
         list.add(new Product("HD Case", 80.90));
 
+        ProductService ps = new ProductService();
+        double sum = ps.filteredSum(list, p -> p.getName().charAt(0)=='M');
 
-        List<String>names = list.stream().map(p-> p.getName().toUpperCase()).collect(Collectors.toList());
-        names.forEach(System.out::println);
+        System.out.println("Sum " + String.format("%.2f",sum));
 
     }
 
