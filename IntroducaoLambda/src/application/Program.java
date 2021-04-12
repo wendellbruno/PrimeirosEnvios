@@ -3,10 +3,10 @@ package application;
 import entites.Product;
 import util.ProductPredicate;
 
-import javax.sql.rowset.Predicate;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class Program {
     public static void main(String[] args) {
@@ -16,7 +16,9 @@ public class Program {
         list.add(new Product("Notebook", 1200.00));
         list.add(new Product("Tablet", 450.00));
 
-        list.removeIf(Product::nonStaticProductPredicate);
+        Predicate<Product> pred = p -> p.getPrice() >= 1000;
+
+        list.removeIf(pred);
 
         for (Product p : list) {
             System.out.println(p);
